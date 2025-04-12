@@ -1,22 +1,24 @@
 import streamlit as st
-import pandas as pd
 
-# METRICS
-st.title("Metric")
+page1 = st.Page('page1.py', title='Page 1')
+page2 = st.Page('page2.py', title='Page 2')
 
-st.metric(label="Number of Assists", value="25", delta="+6")
-st.metric(label="Goals", value="13", delta="-5")
+pg = st.navigation([page1, page2])
 
-# DATAFRAME
-st.title(":blue[Dataframe]")
-data= {
-    "Player's Name": ["Pelè", "Maradona", "Baggio"],
-    "Goals": [13, 25, 24],
-    "Team":["Juve", "Napoli", "Inter"]
-}
-df = pd.DataFrame(data)
-st.subheader("Dataframe")
-st.dataframe(df) # display dataframe
+st.set_page_config(page_title='DV4S Exe2')
 
-st.subheader("Static Table")
-st.table(df)
+# SELECT BOX
+# Object like
+st.sidebar.selectbox(
+    'Select you player',
+    ('Maradona', 'Pelè', 'Fonseca'),
+    key='Players'
+)
+# With like
+with st.sidebar:
+    rb = st.radio(
+        'Team',
+        ('Napoli', 'Milan', 'Roma'),
+        key='Team'
+    )
+    
