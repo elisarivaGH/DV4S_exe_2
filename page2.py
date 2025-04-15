@@ -63,3 +63,10 @@ st.title('Secrets')
 
 username = st.secrets['username']
 st. write(username)
+
+import os
+password = os.environ['password']
+st.write(password)
+
+secret_psw = st.secrets.further_secrets.secret_password
+st.write(secret_psw)
